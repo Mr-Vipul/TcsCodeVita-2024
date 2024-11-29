@@ -1,7 +1,7 @@
-def distance_squared(a, b):
+def distance(a, b):
     return (a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2
 
-def are_polygons_equal(a, b):
+def polygons(a, b):
     n = len(a)
     if n != len(b):
         return False
@@ -9,8 +9,8 @@ def are_polygons_equal(a, b):
     dist_a = []
     dist_b = []
     for i in range(n):
-        dist_a.append(distance_squared(a[i], a[(i + 1) % n]))
-        dist_b.append(distance_squared(b[i], b[(i + 1) % n]))
+        dist_a.append(distance(a[i], a[(i + 1) % n]))
+        dist_b.append(distance(b[i], b[(i + 1) % n]))
 
     for shift in range(n):
         match = True
@@ -34,7 +34,7 @@ def main():
 
     for i in range(N):
         for j in range(i + 1, N):
-            if are_polygons_equal(earrings[i], earrings[j]):
+            if polygons(earrings[i], earrings[j]):
                 print(i + 1, j + 1, end="")
                 return
 
